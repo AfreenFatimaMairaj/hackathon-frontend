@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const sections = [
-  { key: 'todo', title: 'To Do', color: 'bg-purple-500' },
+  { key: 'todo', title: 'Todo', color: 'bg-purple-500' },
   { key: 'doing', title: 'Doing', color: 'bg-blue-500' },
   { key: 'review', title: 'Review', color: 'bg-orange-400' },
 ];

@@ -17,12 +17,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 text-gray-200 p-4 w-full flex justify-between items-center">
+    <nav className="bg-blue-900 text-gray-200 p-4 w-full flex justify-between items-center">
       <div className="font-bold text-xl text-white">
-        <Link to="/">Task Manager</Link>
+        <Link to="/">To Do App</Link>
       </div>
       <div className="flex space-x-6 ml-auto">
-        <Link to="/" className="hover:text-teal-400">Home</Link>
+        <Link to="/" className="hover:text-shadow-green-400">Home</Link>
 
         {/* If the user is logged in, show these links */}
         {isLoggedIn ? (

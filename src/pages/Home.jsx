@@ -25,7 +25,7 @@ const Home = () => {
             Welcome to the Task Tracker
           </h1>
           <p className="text-lg text-pastel-gray mb-8">
-            Manage your tasks effortlessly across multiple stages: To Do, In Progress, and Done.
+            Manage your tasks effortlessly across multiple stages:to do , In Progress, and Done.
           </p>
 
           {/* Show "Get Started" button if not logged in */}

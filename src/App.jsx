@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import Profile from './pages/Profile';
 import AddTask from './pages/AddTask';
 import YourTasks from './pages/YourTasks';
+import EditTask from "./pages/EditTask";
 import ProtectedRoute from './components/ProtectedRoute';  // Import ProtectedRoute
 import './App.css'
 
@@ -47,6 +48,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <YourTasks />
+              </ProtectedRoute>
+            }
+          />
+           <Route
+            path="/edit-task/:id"
+            element={
+              <ProtectedRoute>
+                <EditTask />
               </ProtectedRoute>
             }
           />

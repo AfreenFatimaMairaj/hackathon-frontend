@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API from '../api/axios';
@@ -14,7 +15,7 @@ const YourTasks = () => {
       setIsLoggedIn(true);
       fetchTasks();
     } else {
-      navigate('/login'); // Redirect to login if not logged in
+      navigate('/login');
     }
   }, [navigate]);
 
@@ -26,7 +27,7 @@ const YourTasks = () => {
       });
       setTasks(res.data);
     } catch (err) {
-      console.error(err);
+      console.error('Fetch Tasks Error:', err.response?.data || err.message);
       setError('Failed to load tasks');
     }
   };
@@ -34,12 +35,13 @@ const YourTasks = () => {
   const updateStatus = async (id, status) => {
     const token = localStorage.getItem('token');
     try {
-      await API.put(`/tasks/${id}`, { status }, {
+      const res = await API.patch(`/tasks/${id}`, { status }, {
         headers: { Authorization: `Bearer ${token}` }
       });
+      console.log('Status Updated:', res.data);
       fetchTasks();
     } catch (err) {
-      console.error(err);
+      console.error('Update Status Error:', err.response?.data || err.message);
       setError('Failed to update status');
     }
   };
@@ -47,12 +49,13 @@ const YourTasks = () => {
   const deleteTask = async (id) => {
     const token = localStorage.getItem('token');
     try {
-      await API.delete(`/tasks/${id}`, {
+      const res = await API.delete(`/tasks/:id${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
+      console.log('Task Deleted:', res.data);
       fetchTasks();
     } catch (err) {
-      console.error(err);
+      console.error('Delete Task Error:', err.response?.data || err.message);
       setError('Failed to delete task');
     }
   };
@@ -65,7 +68,6 @@ const YourTasks = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-pastel-blue">
-      {/* Heading */}
       <div className="p-6 bg-pastel-yellow text-center">
         <h1 className="text-4xl font-bold text-pastel-purple mb-6">
           Your Tasks
@@ -73,12 +75,11 @@ const YourTasks = () => {
         {error && <p className="text-red-500">{error}</p>}
       </div>
 
-      {/* Tasks Display */}
       <div className="flex flex-col md:flex-row gap-6 p-6 flex-grow bg-gray-100">
         {stages.map((stage) => (
           <div key={stage} className="flex-1 bg-white rounded-lg shadow-md p-4">
             <h2 className="text-2xl font-bold capitalize mb-4 text-center">
-              {stage === 'todo' ? 'To Do' : stage === 'inprogress' ? 'In Progress' : 'Done'}
+              {stage === 'todo' ? 'Todo' : stage === 'inprogress' ? 'In Progress' : 'Done'}
             </h2>
 
             {tasks.filter(task => task.status === stage).length === 0 ? (
@@ -109,7 +110,7 @@ const YourTasks = () => {
                           onClick={() => updateStatus(task._id, s)}
                           className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-sm"
                         >
-                          Mark as {s === 'todo' ? 'To Do' : s === 'inprogress' ? 'In Progress' : 'Done'}
+                          Mark as {s === 'todo' ? 'Todo' : s === 'inprogress' ? 'In Progress' : 'Done'}
                         </button>
                       )
                     ))}

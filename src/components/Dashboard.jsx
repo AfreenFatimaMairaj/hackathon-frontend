@@ -92,7 +92,7 @@ const Dashboard = () => {
         {stages.map((stage) => (
           <div key={stage} className="flex-1 bg-white rounded-lg shadow-md p-4">
             <h2 className="text-2xl font-bold capitalize mb-4 text-center">
-              {stage === 'todo' ? 'To Do' : stage === 'inprogress' ? 'In Progress' : 'Done'}
+              {stage === 'todo' ? 'Todo' : stage === 'inprogress' ? 'In Progress' : 'Done'}
             </h2>
 
             {tasks.filter(task => task.status === stage).length === 0 ? (
@@ -123,7 +123,7 @@ const Dashboard = () => {
                           onClick={() => updateStatus(task._id, s)}
                           className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-sm"
                         >
-                          Mark as {s === 'todo' ? 'To Do' : s === 'inprogress' ? 'In Progress' : 'Done'}
+                          Mark as {s === 'todo' ? 'Todo' : s === 'inprogress' ? 'In Progress' : 'Done'}
                         </button>
                       )
                     ))}

@@ -20,7 +20,7 @@ export default function AddTask() {
 
     try {
       await API.post(
-        'http://localhost:5000/api/tasks/add', 
+        '/tasks/add', 
         { title, description, status },
         {
           headers: {

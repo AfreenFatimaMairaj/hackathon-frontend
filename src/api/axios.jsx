@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  // baseURL: 'https://backend-delta-red.vercel.app/api',
-  baseURL: 'http://localhost:5000/api',
+  baseURL: "https://backend-rose-psi.vercel.app/"||"http://localhost:5000/",
 });
 
 // Attach token to every request automatically

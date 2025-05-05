@@ -20,7 +20,7 @@ export default function AddTask() {
 
     try {
       await API.post(
-        '/tasks/add', 
+        '/api/tasks/add', 
         { title, description, status },
         {
           headers: {

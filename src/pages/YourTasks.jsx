@@ -22,7 +22,7 @@ const YourTasks = () => {
   const fetchTasks = async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await API.get('/tasks', {
+      const res = await API.get('/api/tasks', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTasks(res.data);
@@ -35,7 +35,7 @@ const YourTasks = () => {
   const updateStatus = async (id, status) => {
     const token = localStorage.getItem('token');
     try {
-      const res = await API.patch(`/tasks/${id}`, { status }, {
+      const res = await API.patch(`api/tasks/${id}`, { status }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       console.log('Status Updated:', res.data);
@@ -49,7 +49,7 @@ const YourTasks = () => {
   const deleteTask = async (id) => {
     const token = localStorage.getItem('token');
     try {
-      const res = await API.delete(`/tasks/:id${id}`, {
+      const res = await API.delete(`/api/tasks/:id${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       console.log('Task Deleted:', res.data);

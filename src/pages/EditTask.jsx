@@ -18,7 +18,7 @@ const EditTask = () => {
   const fetchTask = async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await API.get(`/tasks/${id}`, {
+      const res = await API.get(`/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const { title, description, status } = res.data;
@@ -35,7 +35,7 @@ const EditTask = () => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     try {
-      await API.patch(`/tasks/${id}`, { title, description, status }, {
+      await API.patch(`/api/tasks/${id}`, { title, description, status }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       navigate('/your-tasks'); // Go back to tasks after editing
@@ -49,7 +49,6 @@ const EditTask = () => {
     <div className="min-h-screen flex items-center justify-center bg-pastel-blue p-6">
       <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
         <h2 className="text-3xl font-bold text-center text-pastel-purple mb-6">Edit Task</h2>
-
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
         <form onSubmit={handleUpdate} className="space-y-4">
